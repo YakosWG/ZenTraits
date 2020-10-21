@@ -1,0 +1,12 @@
+/.gradle/
+/build/
+/ZenTraits_Client.launch
+/ZenTraits_Server.launch
+/run/
+/eclipse/
+/.classpath
+/.project
+/.settings/
+/bin/
+/ice_arrow_shaft.png
+/opencmd.bat

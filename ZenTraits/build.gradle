@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "https://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+
+
+version = "1.0-beta"
+group = "yako.zentraits" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "zentraits"
+
+sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+	
+	mappings = "snapshot_20171003"    
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name "BASE"
+        url "http://maven.blamejared.com"
+    }
+    maven {
+        name 'Tinkers/JEI'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name 'Chickens'
+        url 'https://minecraft.curseforge.com/api/maven/'
+    }
+	maven {
+		name 'ModTweaker'
+		url '/com/teamacronymcoders/ContentTweaker/'
+	}
+}
+
+dependencies {
+
+	deobfCompile "com.teamacronymcoders.base:base:${minecraft_version}-${base_version}-SNAPSHOT.+"
+	deobfCompile "com.teamacronymcoders:ContentTweaker:${minecraft_version}-${cot_version}"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crafttweaker_version}"
+	deobfCompile "slimeknights:TConstruct:${minecraft_version}-${tinkers_version}"
+    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
+    deobfCompile "chickens:chickens:${chickens_version}"
+
+}
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
