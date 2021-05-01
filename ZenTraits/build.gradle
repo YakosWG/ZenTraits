@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.0-beta"
+version = "1.1-beta"
 group = "yako.zentraits" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "zentraits"
 
@@ -45,6 +45,9 @@ repositories {
 		name 'ModTweaker'
 		url '/com/teamacronymcoders/ContentTweaker/'
 	}
+	maven {
+        url "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
@@ -55,6 +58,8 @@ dependencies {
 	deobfCompile "slimeknights:TConstruct:${minecraft_version}-${tinkers_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "chickens:chickens:${chickens_version}"
+	compile files("libs/")
+	deobfCompile "curse.maven:conarm-287683:3174535"
 
 }
 
