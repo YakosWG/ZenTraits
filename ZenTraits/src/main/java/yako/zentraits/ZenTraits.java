@@ -34,17 +34,18 @@ public class ZenTraits {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		UtilCommands.registerCommands();
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-
 		for (Runnable r : HandleTraitManager.detachTasks) {
 			r.run();
 		}
 		for (Runnable r : HandleTraitManager.attachTasks) {
 			r.run();
 		}
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+
+
 
 	}
 

@@ -34,6 +34,8 @@ public class TraitManager {
 	@ZenDoc("Will schedule a trait to be detached from a material. Because TiC registers the materials during init the task is run during postinit.")
 	public static void detachTrait(String materialID, String traitID, @Optional String partType) {
 
+
+
 		HandleTraitManager.detachTasks.add(new Runnable() {
 			@Override
 			public void run() {

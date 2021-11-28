@@ -57,7 +57,6 @@ dependencies {
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crafttweaker_version}"
 	deobfCompile "slimeknights:TConstruct:${minecraft_version}-${tinkers_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
-    deobfCompile "chickens:chickens:${chickens_version}"
 	compile files("libs/")
 	deobfCompile "curse.maven:conarm-287683:3174535"
 
